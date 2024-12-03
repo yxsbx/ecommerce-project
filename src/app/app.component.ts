@@ -21,7 +21,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
     SidebarComponent,
     CommonModule,
     FontAwesomeModule,
-],
+  ],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
@@ -30,8 +30,11 @@ export class AppComponent {
   isAuthenticated = false;
   isSidebarFixed = true;
 
-  constructor(private authService: AuthService, library: FaIconLibrary) {
-    this.authService.isAuthenticated$.subscribe((status) => {
+  constructor(
+    private authService: AuthService,
+    library: FaIconLibrary
+  ) {
+    this.authService.isAuthenticated$.subscribe(status => {
       this.isAuthenticated = status;
     });
 
@@ -40,5 +43,5 @@ export class AppComponent {
 
   toggleSidebarFixed(isFixed: boolean) {
     this.isSidebarFixed = isFixed;
-  }  
+  }
 }

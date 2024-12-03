@@ -3,7 +3,7 @@
   <ul>
     <li *ngFor="let child of children">
       <strong>{{ child.name }}</strong> ({{
-        child.birth_date | date : "dd/MM/yyyy"
+        child.birth_date | date: 'dd/MM/yyyy'
       }})
     </li>
   </ul>

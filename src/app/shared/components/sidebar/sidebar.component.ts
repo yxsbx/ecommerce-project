@@ -39,7 +39,10 @@ export class SidebarComponent {
     },
   ];
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   toggleSidebar(isHovering: boolean) {
     this.isSidebarHovering = isHovering;

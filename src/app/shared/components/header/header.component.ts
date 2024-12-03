@@ -16,7 +16,10 @@ export class HeaderComponent {
   profilePictureNumber: number = 1;
   isProfileMenuOpen = false;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {
     const currentUser = this.authService.getCurrentUser();
     this.userName = currentUser?.name ?? 'Usuário';
     this.userEmail = currentUser?.email ?? 'email@example.com';

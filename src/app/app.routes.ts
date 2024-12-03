@@ -8,7 +8,7 @@ export const routes: Routes = [
     path: 'dashboard',
     loadComponent: () =>
       import('./features/dashboard/dashboard.component').then(
-        (m) => m.DashboardComponent
+        m => m.DashboardComponent
       ),
     canActivate: [AuthGuard],
   },
@@ -16,21 +16,21 @@ export const routes: Routes = [
     path: 'auth/login',
     loadComponent: () =>
       import('./features/auth/login/login.component').then(
-        (m) => m.LoginComponent
+        m => m.LoginComponent
       ),
   },
   {
     path: 'auth/register',
     loadComponent: () =>
       import('./features/auth/register/register.component').then(
-        (m) => m.RegisterComponent
+        m => m.RegisterComponent
       ),
   },
   {
     path: 'children',
     loadComponent: () =>
       import('./features/children/child-list/child-list.component').then(
-        (m) => m.ChildListComponent
+        m => m.ChildListComponent
       ),
     canActivate: [AuthGuard, RoleGuard],
     data: { role: 'parent' },
@@ -39,7 +39,7 @@ export const routes: Routes = [
     path: 'tasks',
     loadComponent: () =>
       import('./features/tasks/task-list/task-list.component').then(
-        (m) => m.TaskListComponent
+        m => m.TaskListComponent
       ),
     canActivate: [AuthGuard, RoleGuard],
     data: { role: 'child' },
@@ -48,7 +48,7 @@ export const routes: Routes = [
     path: 'store',
     loadComponent: () =>
       import('./features/store/store-list/store-list.component').then(
-        (m) => m.StoreListComponent
+        m => m.StoreListComponent
       ),
     canActivate: [AuthGuard],
   },
@@ -56,28 +56,28 @@ export const routes: Routes = [
     path: '404',
     loadComponent: () =>
       import('./features/errors/not-found/not-found.component').then(
-        (m) => m.NotFoundComponent
+        m => m.NotFoundComponent
       ),
   },
   {
     path: '500',
     loadComponent: () =>
       import('./features/errors/server-error/server-error.component').then(
-        (m) => m.ServerErrorComponent
+        m => m.ServerErrorComponent
       ),
   },
   {
     path: '401',
     loadComponent: () =>
       import('./features/errors/unauthorized/unauthorized.component').then(
-        (m) => m.UnauthorizedComponent
+        m => m.UnauthorizedComponent
       ),
   },
   {
     path: '403',
     loadComponent: () =>
       import('./features/errors/forbidden/forbidden.component').then(
-        (m) => m.ForbiddenComponent
+        m => m.ForbiddenComponent
       ),
   },
   {
@@ -85,7 +85,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import(
         './features/errors/not-implemented/not-implemented.component'
-      ).then((m) => m.NotImplementedComponent),
+      ).then(m => m.NotImplementedComponent),
   },
   { path: '**', redirectTo: '404' },
 ];

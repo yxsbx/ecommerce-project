@@ -22,9 +22,9 @@
         class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-gray-800 rounded-full"
       ></span>
       <div
-    *ngIf="isProfileMenuOpen"
-    class="absolute right-0 mt-4 w-[240px] bg-white rounded-lg shadow-lg z-30 text-gray-700"
-  >
+        *ngIf="isProfileMenuOpen"
+        class="absolute right-0 mt-4 w-[240px] bg-white rounded-lg shadow-lg z-30 text-gray-700"
+      >
         <div class="p-4 border-b flex items-center gap-3">
           <img
             [src]="'assets/avatars/avatar' + profilePictureNumber + '.svg'"
@@ -33,9 +33,9 @@
             (click)="toggleProfileMenu($event)"
           />
           <div>
-          <p class="font-bold">{{ userName }}</p>
-          <p class="text-sm">{{ userEmail }}</p>
-        </div>
+            <p class="font-bold">{{ userName }}</p>
+            <p class="text-sm">{{ userEmail }}</p>
+          </div>
         </div>
         <ul class="py-2">
           <li

@@ -20,7 +20,7 @@ export class ToastService {
   remove(id: number) {
     const updatedToasts = this.toastsSubject
       .getValue()
-      .filter((toast) => toast.id !== id);
+      .filter(toast => toast.id !== id);
     this.toastsSubject.next(updatedToasts);
   }
 }

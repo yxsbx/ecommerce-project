@@ -18,17 +18,15 @@ export class ChildService {
     avatarUrl?: string,
     interests?: any
   ) {
-    const { data, error } = await supabase
-      .from('children')
-      .insert([
-        {
-          parent_id: parentId,
-          name,
-          birth_date: birthDate,
-          avatar_url: avatarUrl,
-          interests,
-        },
-      ]);
+    const { data, error } = await supabase.from('children').insert([
+      {
+        parent_id: parentId,
+        name,
+        birth_date: birthDate,
+        avatar_url: avatarUrl,
+        interests,
+      },
+    ]);
     if (error) throw error;
     return data;
   }
