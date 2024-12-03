@@ -1,0 +1,22 @@
+<ng-container *ngIf="!isAuthenticated; else loggedIn">
+</ng-container>
+
+<ng-template #loggedIn>
+  <div class="flex h-screen relative">
+    <app-sidebar
+      (sidebarFixedChange)="toggleSidebarFixed($event)"
+    ></app-sidebar>
+    <div
+      [ngClass]="{
+        'ml-0': isSidebarFixed,
+        'ml-20': !isSidebarFixed
+      }"
+      class="flex-1 flex flex-col transition-all duration-300"
+    >
+      <app-header></app-header>
+    </div>
+  </div>
+</ng-template>
+
+<router-outlet></router-outlet>
+<app-toast></app-toast>

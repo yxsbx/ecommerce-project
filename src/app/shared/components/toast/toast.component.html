@@ -1,0 +1,22 @@
+<div
+  *ngIf="(toasts$ | async)?.length"
+  class="fixed top-4 right-4 space-y-4 z-50"
+>
+  <div
+    *ngFor="let toast of toasts$ | async"
+    [ngClass]="toast.type === 'success' ? 'bg-green-500' : 'bg-red-500'"
+    class="flex items-center p-4 text-white rounded-lg shadow-lg w-80 animate-slide-in"
+  >
+    <fa-icon [icon]="getIcon(toast.type)" class="mr-4 text-2xl"></fa-icon>
+    <div>
+      <h4 class="font-bold text-sm">{{ toast.title }}</h4>
+      <p class="text-xs">{{ toast.message }}</p>
+    </div>
+    <button
+      (click)="removeToast(toast.id)"
+      class="ml-auto text-white hover:text-gray-200 focus:outline-none"
+    >
+      <fa-icon [icon]="['fas', 'xmark']"></fa-icon>
+    </button>
+  </div>
+</div>

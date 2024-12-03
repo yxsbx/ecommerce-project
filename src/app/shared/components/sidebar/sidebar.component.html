@@ -1,0 +1,73 @@
+<div
+  class="flex flex-col h-screen bg-gray-800 text-gray-200 shadow-lg transition-all duration-300"
+  [ngClass]="{
+    'w-64': isSidebarExpanded,
+    'w-20': !isSidebarExpanded,
+    'absolute z-50': !isFixed,
+    'relative z-10': isFixed
+  }"
+  (mouseenter)="toggleSidebar(true)"
+  (mouseleave)="toggleSidebar(false)"
+>
+<div
+  class="flex items-center justify-center px-4 py-4 border-b border-gray-600"
+  [ngClass]="{ 'justify-between': isSidebarExpanded, 'justify-center': !isSidebarExpanded }"
+  >
+    <div class="flex items-center">
+      <img src="assets/logo.png" alt="Logo" class="h-10" />
+      <span
+        *ngIf="isSidebarExpanded"
+        class="ml-3 text-lg font-bold text-gray-100"
+      >
+        Mercadinho da Mesada
+      </span>
+    </div>
+    <button
+      *ngIf="isSidebarExpanded"
+      class="relative flex items-center justify-center w-6 h-6 rounded-full border border-blue-500 bg-gray-700 hover:bg-blue-500 focus:outline-none cursor-pointer"
+      (click)="toggleFixedSidebar()"
+    >
+      <span
+        [ngClass]="{
+          'bg-blue-500': isFixed,
+          'bg-transparent': !isFixed
+        }"
+        class="absolute w-3 h-3 rounded-full transition-all duration-200"
+      ></span>
+    </button>
+  </div>
+
+  <ul
+    class="mt-6 space-y-4"
+    [ngClass]="{ 'items-start': isSidebarExpanded, 'items-center justify-center': !isSidebarExpanded }"
+  >
+    <li
+      *ngFor="let item of menuItems"
+      class="group flex items-center p-2 rounded-md hover:bg-gray-700 transition-colors duration-300"
+      [ngClass]="{ 
+        'justify-start': isSidebarExpanded, 
+        'justify-center': !isSidebarExpanded 
+      }"
+      [routerLink]="item.route"
+      routerLinkActive="bg-blue-600 text-white"
+    >
+      <fa-icon
+        [icon]="item.icon"
+        class="text-gray-500 group-hover:text-blue-500 text-lg"
+      ></fa-icon>
+      <span *ngIf="isSidebarExpanded" class="ml-3 group-hover:text-blue-500">
+        {{ item.label }}
+      </span>
+    </li>
+  </ul>
+
+  <div *ngIf="isSidebarExpanded" class="mt-auto mb-4 flex justify-center px-4">
+    <button
+      (click)="logout()"
+      class="flex items-center gap-2 bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600"
+    >
+      <fa-icon [icon]="['fas', 'right-from-bracket']" class="text-lg"></fa-icon>
+      <span>Sair</span>
+    </button>
+  </div>
+</div>

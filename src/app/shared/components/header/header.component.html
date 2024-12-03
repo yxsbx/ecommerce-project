@@ -1,0 +1,84 @@
+<header
+  class="flex justify-between items-center w-full px-8 py-2 bg-gray-800 text-gray-200 shadow-md z-20"
+>
+  <div class="flex items-center">
+    <input
+      type="text"
+      placeholder="Search..."
+      class="bg-gray-700 px-4 py-2 rounded-md text-sm focus:ring focus:ring-blue-500"
+    />
+  </div>
+  <div class="flex items-center space-x-4">
+    <fa-icon [icon]="'bell'" class="cursor-pointer"></fa-icon>
+    <fa-icon [icon]="'cart-shopping'" class="cursor-pointer"></fa-icon>
+    <div class="relative">
+      <img
+        [src]="'assets/avatars/avatar' + profilePictureNumber + '.svg'"
+        alt="Profile"
+        class="h-10 w-10 rounded-full cursor-pointer"
+        (click)="toggleProfileMenu($event)"
+      />
+      <span
+        class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-gray-800 rounded-full"
+      ></span>
+      <div
+    *ngIf="isProfileMenuOpen"
+    class="absolute right-0 mt-4 w-[240px] bg-white rounded-lg shadow-lg z-30 text-gray-700"
+  >
+        <div class="p-4 border-b flex items-center gap-3">
+          <img
+            [src]="'assets/avatars/avatar' + profilePictureNumber + '.svg'"
+            alt="Profile"
+            class="h-12 w-12 rounded-full cursor-pointer"
+            (click)="toggleProfileMenu($event)"
+          />
+          <div>
+          <p class="font-bold">{{ userName }}</p>
+          <p class="text-sm">{{ userEmail }}</p>
+        </div>
+        </div>
+        <ul class="py-2">
+          <li
+            class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
+          >
+            <fa-icon [icon]="'user'" class="text-gray-500"></fa-icon>
+            <span>My Profile</span>
+          </li>
+          <li
+            class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
+          >
+            <fa-icon [icon]="'cog'" class="text-gray-500"></fa-icon>
+            <span>Settings</span>
+          </li>
+          <li
+            class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
+          >
+            <fa-icon [icon]="'dollar-sign'" class="text-gray-500"></fa-icon>
+            <span>Pricing</span>
+          </li>
+          <li
+            class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
+          >
+            <fa-icon [icon]="'question-circle'" class="text-gray-500"></fa-icon>
+            <span>FAQ</span>
+          </li>
+        </ul>
+        <div class="p-4 border-t">
+          <button
+            (click)="logout()"
+            class="w-full bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600"
+          >
+            <fa-icon [icon]="'right-from-bracket'" class="mr-2"></fa-icon>
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+    <button
+      (click)="toggleMode()"
+      class="bg-gray-700 px-3 py-1 rounded-lg text-sm hover:bg-gray-600"
+    >
+      Infantil
+    </button>
+  </div>
+</header>

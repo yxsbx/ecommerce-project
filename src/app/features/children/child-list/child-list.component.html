@@ -1,0 +1,10 @@
+<div class="child-list">
+  <h2>Filhos</h2>
+  <ul>
+    <li *ngFor="let child of children">
+      <strong>{{ child.name }}</strong> ({{
+        child.birth_date | date : "dd/MM/yyyy"
+      }})
+    </li>
+  </ul>
+</div>

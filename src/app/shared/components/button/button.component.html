@@ -1,0 +1,12 @@
+<button [type]="type" [disabled]="disabled" class="btn" *ngIf="!routerLink">
+  <ng-container *ngIf="icon">
+    <fa-icon [icon]="icon" class="mr-2"></fa-icon>
+  </ng-container>
+  {{ label }}
+</button>
+<a *ngIf="routerLink" [routerLink]="routerLink" class="btn">
+  <ng-container *ngIf="icon">
+    <fa-icon [icon]="icon" class="mr-2"></fa-icon>
+  </ng-container>
+  {{ label }}
+</a>
