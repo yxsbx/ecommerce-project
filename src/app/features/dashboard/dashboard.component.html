@@ -1,2 +1,91 @@
-<h1>Bem-vindo ao Dashboard</h1>
-<p>Aqui será exibido o resumo financeiro.</p>
+<div class="p-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+    <app-card
+      title="Ratings"
+      subtitle="Year of 2024"
+      value="13k"
+      growth="+15.6%"
+      icon="star"
+    ></app-card>
+
+    <app-card
+      title="Sessions"
+      subtitle="Last Week"
+      value="24.5k"
+      growth="-20%"
+      [imageSrc]="'assets/images/session-character.png'"
+    ></app-card>
+
+    <app-card
+      title="Transactions"
+      subtitle="Total 48.5% Growth 😎 this month"
+      value="Sales"
+      growth="245k"
+      icon="chart-bar"
+    ></app-card>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+    <div class="bg-white rounded-lg shadow-md p-4">
+      <h3 class="text-lg font-bold mb-4">Total Sales</h3>
+      <app-line-chart
+        [data]="lineChartData"
+        [labels]="lineChartLabels"
+      ></app-line-chart>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md p-4">
+      <h3 class="text-lg font-bold mb-4">Sales Breakdown</h3>
+      <app-pie-chart
+        [data]="pieChartData"
+        [labels]="pieChartLabels"
+      ></app-pie-chart>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-lg shadow-md p-4 mb-8">
+    <h3 class="text-lg font-bold mb-4">Achievements</h3>
+    <ul class="space-y-4">
+      <li class="flex items-center gap-4">
+        <img
+          src="assets/medals/medal-gold.png"
+          alt="Gold Medal"
+          class="h-12 w-12"
+        />
+        <div>
+          <p class="font-bold">John</p>
+          <p class="text-sm text-gray-500">Completed 50 tasks this month!</p>
+        </div>
+      </li>
+      <li class="flex items-center gap-4">
+        <img
+          src="assets/medals/medal-silver.png"
+          alt="Silver Medal"
+          class="h-12 w-12"
+        />
+        <div>
+          <p class="font-bold">Emma</p>
+          <p class="text-sm text-gray-500">Reached Level 10!</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="bg-white rounded-lg shadow-md p-4">
+    <h3 class="text-lg font-bold mb-4">Ranking</h3>
+    <ul class="space-y-4">
+      <li class="flex items-center justify-between">
+        <p class="font-bold">1. John</p>
+        <p class="text-green-500 font-bold">80 tasks</p>
+      </li>
+      <li class="flex items-center justify-between">
+        <p class="font-bold">2. Emma</p>
+        <p class="text-green-500 font-bold">70 tasks</p>
+      </li>
+      <li class="flex items-center justify-between">
+        <p class="font-bold">3. Liam</p>
+        <p class="text-green-500 font-bold">60 tasks</p>
+      </li>
+    </ul>
+  </div>
+</div>

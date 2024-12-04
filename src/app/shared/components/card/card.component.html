@@ -1,0 +1,29 @@
+<div class="bg-white rounded-lg shadow-md p-4 flex items-center space-x-4">
+  <ng-container *ngIf="icon; else imageTemplate">
+    <fa-icon [icon]="icon" class="text-2xl text-blue-500"></fa-icon>
+  </ng-container>
+  <ng-template #imageTemplate>
+    <img
+      [src]="imageSrc"
+      *ngIf="imageSrc"
+      class="h-12 w-12 rounded-full"
+      alt=""
+    />
+  </ng-template>
+  <div>
+    <h3 class="font-bold text-gray-800">{{ title }}</h3>
+    <p class="text-sm text-gray-500">{{ subtitle }}</p>
+    <div class="flex items-center space-x-2 mt-2">
+      <p class="text-lg font-bold text-gray-800">{{ value }}</p>
+      <span
+        [ngClass]="{
+          'text-green-500': growth.startsWith('+'),
+          'text-red-500': growth.startsWith('-'),
+        }"
+        class="text-sm font-semibold"
+      >
+        {{ growth }}
+      </span>
+    </div>
+  </div>
+</div>
