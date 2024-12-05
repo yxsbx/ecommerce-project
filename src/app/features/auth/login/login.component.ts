@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import {
   ReactiveFormsModule,
@@ -20,6 +20,7 @@ import { LogoHeaderComponent } from '../../../shared/components/logo-header/logo
     ReactiveFormsModule,
     FontAwesomeModule,
     LogoHeaderComponent,
+    RouterModule,
   ],
   templateUrl: './login.component.html',
 })
@@ -63,18 +64,20 @@ export class LoginComponent {
     try {
       const { email, password } = this.form.value;
       const user = await this.authService.login(email, password);
+
       if (user) {
         this.toastService.show(
           'Sucesso',
           'Login realizado com sucesso!',
           'success'
         );
+
         this.router.navigate(['/dashboard']);
       }
     } catch (error) {
       this.toastService.show(
         'Erro',
-        'Credenciais inválidas. Tente novamente.',
+        'Credenciais inválidas ou problemas no servidor.',
         'error'
       );
       console.error('Erro ao fazer login:', error);

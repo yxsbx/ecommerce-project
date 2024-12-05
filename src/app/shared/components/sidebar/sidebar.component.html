@@ -1,5 +1,5 @@
 <div
-  class="flex flex-col h-screen bg-#F4F5FA text-gray-800 shadow-lg transition-all duration-300"
+  class="flex flex-col h-screen bg-gray-50 text-gray-800 shadow-xl transition-all duration-300"
   [ngClass]="{
     'w-64': isSidebarExpanded,
     'w-20': !isSidebarExpanded,
@@ -10,7 +10,7 @@
   (mouseleave)="toggleSidebar(false)"
 >
   <div
-    class="flex items-center justify-center px-6 py-8"
+    class="flex items-center justify-center px-4 py-8"
     [ngClass]="{
       'justify-between': isSidebarExpanded,
       'justify-center': !isSidebarExpanded,
@@ -38,7 +38,7 @@
     </div>
     <button
       *ngIf="isSidebarExpanded"
-      class="relative flex items-center justify-center w-6 h-6 rounded-full border-[2px] border-yellow-400 hover:bg-yellow-400 focus:outline-none cursor-pointer"
+      class="relative flex items-center justify-center w-6 h-6 rounded-full border-[2px] border-yellow-400 hover:bg-yellow-400 cursor-pointer"
       (click)="toggleFixedSidebar()"
     >
       <span
@@ -60,7 +60,7 @@
   >
     <li
       *ngFor="let item of menuItems"
-      class="group flex items-center p-2 rounded-md cursor-pointer hover:bg-gradient-to-r hover:bg-gray-200 hover:rounded-r-full transition-colors duration-300"
+      class="group flex items-center p-2 rounded-md cursor-pointer hover:bg-gradient-to-r hover:bg-gray-200 hover:rounded-r-full duration-300"
       [ngClass]="{
         'justify-start': isSidebarExpanded,
         'justify-center': !isSidebarExpanded,

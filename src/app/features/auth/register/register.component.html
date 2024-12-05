@@ -1,6 +1,5 @@
-<app-logo-header></app-logo-header>
-
 <div class="flex h-screen">
+  <app-logo-header></app-logo-header>
   <div
     class="hidden lg:flex w-4/6 bg-gradient-to-r from-blue-300 to-blue-100 justify-center items-center"
   >
@@ -117,7 +116,10 @@
 
       <div class="text-center text-sm text-gray-600 mt-8">
         Já tem uma conta?
-        <a href="/auth/login" class="text-blue-500 hover:underline">
+        <a
+          routerLink="/auth/login"
+          class="text-blue-500 cursor-pointer hover:underline"
+        >
           Entre agora
         </a>
         .

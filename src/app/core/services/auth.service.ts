@@ -44,10 +44,12 @@ export class AuthService {
       .single();
 
     if (error || !data) {
+      console.error('Login Error:', error?.message || 'Invalid credentials');
       throw new Error('Credenciais inválidas');
     }
 
     const user = this.mapToUser(data);
+    console.log('Login Successful:', user);
 
     if (this.isLocalStorageAvailable()) {
       localStorage.setItem('user', JSON.stringify(user));
@@ -64,6 +66,10 @@ export class AuthService {
     password: string,
     profilePictureNumber: number = 20
   ): Promise<UserWithRole> {
+    if (!name || !email || !password) {
+      throw new Error('Todos os campos são obrigatórios.');
+    }
+
     const { data, error } = await supabase
       .from('users')
       .insert({
@@ -77,10 +83,19 @@ export class AuthService {
       .single();
 
     if (error || !data) {
+      console.error('Register Error:', error?.message || 'Erro ao registrar');
       throw new Error('Erro ao registrar usuário');
     }
 
-    return this.mapToUser(data);
+    const user = this.mapToUser(data);
+
+    if (this.isLocalStorageAvailable()) {
+      localStorage.setItem('user', JSON.stringify(user));
+    }
+    this.isAuthenticatedSubject.next(true);
+    this.currentUser = user;
+
+    return user;
   }
 
   logout(): void {
@@ -96,6 +111,7 @@ export class AuthService {
       const user = localStorage.getItem('user');
       this.currentUser = user ? JSON.parse(user) : null;
     }
+    this.isAuthenticatedSubject.next(!!this.currentUser);
     return this.currentUser;
   }
 

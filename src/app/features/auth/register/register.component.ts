@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { ToastService } from '../../../core/services/toast.service';
 import {
@@ -20,6 +20,7 @@ import { LogoHeaderComponent } from '../../../shared/components/logo-header/logo
     ReactiveFormsModule,
     FontAwesomeModule,
     LogoHeaderComponent,
+    RouterModule,
   ],
   templateUrl: './register.component.html',
 })
@@ -59,10 +60,11 @@ export class RegisterComponent {
     try {
       const { name, email, password } = this.form.value;
       const user = await this.authService.register(name, email, password);
+
       if (user) {
         this.toastService.show(
           'Sucesso',
-          'Conta criada com sucesso! Você será redirecionado para o login.',
+          'Conta criada com sucesso! Redirecionando...',
           'success'
         );
         this.router.navigate(['/auth/login']);
@@ -70,7 +72,7 @@ export class RegisterComponent {
     } catch (error) {
       this.toastService.show(
         'Erro',
-        'Erro ao criar conta. Tente novamente mais tarde.',
+        'Erro ao criar conta. Por favor, tente novamente mais tarde.',
         'error'
       );
       console.error('Erro ao cadastrar usuário:', error);
